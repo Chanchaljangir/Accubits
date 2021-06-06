@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 var _ = require("lodash");
 const jwt = require("jsonwebtoken");
 
-async function addUser(req, res) {
+async function addUser(req, res) { 
     try {
         let checkEmail = await User.findOne({ email: req.body.email });
         if (checkEmail) {
