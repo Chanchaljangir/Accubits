@@ -1,0 +1,52 @@
+<toaster-container></toaster-container>
+<h2>Register Page</h2><br>
+<div class="login">
+    <form id="login" [formGroup]="registerForm">
+        <label><b>User Name
+        </b>
+    </label> <sup>*</sup>
+    <input type="text" name="Uname" id="Uname" placeholder="Name" formControlName="name">
+  
+    <div class="error-msg" *ngIf="nameRequiredError && (!registerForm.controls.name.dirty
+    || registerForm.get('name').touched) && !registerForm.controls.name.valid" for="name">
+        Name is required
+
+    </div>
+    <br><br>
+        <label><b>User Email
+            </b>
+        </label> <sup>*</sup>
+        <input type="text" name="Uname" id="Uname" placeholder="Email" formControlName="email"
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <div class="error-msg" *ngIf="
+            emailRequiredError && (registerForm.controls.email.dirty ||
+            registerForm.controls.email.touched) &&
+            !registerForm.controls.email.valid
+          " for="email">
+            valid email required
+        </div>
+        <div class="error-msg" *ngIf="
+             emailRequiredError &&   !registerForm.controls.email.dirty &&
+             !registerForm.controls.email.valid
+          " for="email">
+            Email is required
+
+        </div>
+        <br><br>
+        <label><b>Password
+            </b>
+        </label>
+        <sup>*</sup>
+        <input type="Password" name="Pass" id="Pass" placeholder="********" formControlName="password">
+        <div class="error-msg" *ngIf="
+                        passwordRequiredError && (!registerForm.controls.password.dirty
+                        || registerForm.get('password').touched) && !registerForm.controls.password.valid" for="password">
+            Password is required
+        </div>
+        <br><br>
+        <button type="button" (click)="signUp()" id="log"> SignUp</button>
+        <br><br>
+        <br><br>
+        <h3> <a href="javascripr:void(0);" routerLink="/auth/login">Login In</a> </h3>
+    </form>
+</div>

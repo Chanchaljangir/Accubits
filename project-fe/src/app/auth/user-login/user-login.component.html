@@ -1,0 +1,41 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<h2>Login Page</h2><br>
+<div class="login">
+    <form id="login" [formGroup]="loginForm">
+        <label><b>User Email
+            </b>
+        </label> <sup>*</sup>
+        <input type="text" name="Uname" id="Uname" placeholder="Email" formControlName="email"
+            pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <div class="error-msg" *ngIf="
+            emailRequiredError && (loginForm.controls.email.dirty ||
+            loginForm.controls.email.touched) &&
+            !loginForm.controls.email.valid
+          " for="email">
+            valid email required
+        </div>
+        <div class="error-msg" *ngIf="
+             emailRequiredError &&   !loginForm.controls.email.dirty &&
+             !loginForm.controls.email.valid
+          " for="email">
+            email is required
+
+        </div>
+        <br><br>
+        <label><b>Password
+            </b>
+        </label>
+        <sup>*</sup>
+        <input type="Password" name="Pass" id="Pass" placeholder="********" formControlName="password">
+        <div class="error-msg" *ngIf="
+                        passwordRequiredError && (!loginForm.controls.password.dirty
+                        || loginForm.get('password').touched) && !loginForm.controls.password.valid" for="password">
+            password is required
+        </div>
+        <br><br>
+        <button type="button" (click)="login()" id="log"> LogIn</button>
+        <br><br>
+        <br><br>
+        <h3> <a href="javascripr:void(0);" routerLink="/auth/signup">SignUp</a> </h3>
+    </form>
+</div>
