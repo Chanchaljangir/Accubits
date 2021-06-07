@@ -6,12 +6,10 @@ const User = require('../models/user');
 const mongoose = require('mongoose');
 // const env= require()
 module.exports = function (passport) {
-    console.log('passportrs')
     let opts = {};
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
     opts.secretOrKey = process.env.SECRET;
     passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-        console.log(jwt_payload);
         User.getUserById(jwt_payload._id, (err, user) => {
             if (err) {
                 return done(err, false);

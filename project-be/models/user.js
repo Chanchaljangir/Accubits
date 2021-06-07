@@ -12,7 +12,7 @@ const UserSchema = mongoose.Schema({
     password: {
         type: String,
         required: [true, 'password is required']
-    }
+    },
 })
 UserSchema.pre('save', function (next) {
     var user = this;
@@ -44,28 +44,11 @@ UserSchema.methods.comparedPassword = function (pw, cb) {
         console.log('matched')
         console.log(isMatch)
         if (err) {
-            console.log("err in metching...",err);
+            console.log("err in metching...", err);
             return cb(err);
         }
         cb(null, isMatch)
     })
 }
-// UserSchema.methods.changePassword = function (password) {
-//     // var user = this;
-//     console.log("inside changePassword ######## ")
-//     bcrypt.genSalt(10, function (err, salt) {
-//         if (err) {
-//             return err
-//         }
-//         bcrypt.hash(password, salt, function (err, hash) {
-//             if (err) {
-//                 return err
-//             }
-//             password = hash;
-//             console.log("has pass ", password)
-//             return password
-//         })
-//         return password
-//     })
-// }
+
 const User = module.exports = mongoose.model("User", UserSchema);

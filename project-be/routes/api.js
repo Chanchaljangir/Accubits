@@ -3,7 +3,7 @@ let router = express.Router();
 var jwt = require('jsonwebtoken');
 let _user = require("../controllers/user");
 const User = require("../models/user");
-
+const auth_middleware = require('../config/middlewares');
 /* Auth Middleware */
 
 function authMiddleware(req, res, next) {
@@ -54,6 +54,8 @@ router.get("/", function (req, res) {
 // function authMiddleware(req, res, next) {
 router.post("/registerUser", _user.addUser);
 router.post("/login", _user.authenticateUser);
-router.get("/getAllUsers", authMiddleware , _user.getUsers);
+router.get("/getAllUsers", auth_middleware.verifyToken , _user.getUsers);
 router.get("/getSpecificUser/:id", authMiddleware , _user.getSpecificUser);
+
+router.post('/token', auth_middleware.verifyRefreshToken, _user.GetAccessToken);
 module.exports = router;
