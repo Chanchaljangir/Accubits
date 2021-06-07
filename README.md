@@ -11,7 +11,7 @@ JWT_REFRESH_SECRET=Cool12456373799999<br>
 JWT_ACCESS_TIME=1d<br>
 JWT_REFRESH_TIME=3d<br>
 
-Run <b>npm i</b>command for downloads a package and it's dependencies<br>
+Run <b>npm i</b> command for downloads a package and it's dependencies<br>
 <b>node index.js</b> for run the backend project
 # Postmon Link
 https://www.getpostman.com/collections/39d09961c14028bca364
